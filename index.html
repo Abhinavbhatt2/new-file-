@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excellence CA - Chartered Accountants & Business Advisors</title>
+    <style>
+        /* --- Google Font Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        /* --- CSS Variables --- */
+        :root {
+            --primary-blue: #3661ED;
+            --primary-yellow: #F3B63A;
+            --cta-orange: #F7A622;
+            --dark-text: #333;
+            --light-text: #fff;
+            --body-bg: #fff;
+            --nav-link-color: #555;
+            --header-shadow: rgba(0, 0, 0, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- General Styles & Resets --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--body-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--body-bg);
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--header-shadow);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark-text);
+        }
+
+        .logo-icon {
+            background-color: #1E4AE9;
+            color: var(--light-text);
+            font-weight: 700;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--nav-link-color);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cta-button {
+            background-color: var(--cta-orange);
+            color: var(--light-text);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e09315;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        /* --- Hero Section --- */
+        .hero {
+            background: var(--primary-blue);
+            background: linear-gradient(100deg, #1e4ae9, #3f71f8);
+            color: var(--light-text);
+            padding: 80px 0;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .hero-content h2 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: var(--primary-yellow);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-top: 20px;
+            max-width: 500px;
+            opacity: 0.9;
+        }
+
+        .hero-image-wrapper {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 40px; /* Space for the satisfaction card */
+        }
+
+        .code-image-container {
+            position: relative;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) rotateZ(2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .code-image-container:hover {
+            transform: perspective(1000px) rotate(0);
+        }
+        
+        .code-image {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        .satisfaction-card {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background-color: var(--light-text);
+            color: var(--dark-text);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px var(--card-shadow);
+            text-align: center;
+            transform: rotate(-5deg);
+        }
+
+        .satisfaction-card .percentage {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .satisfaction-card .label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+        }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .main-nav { display: none; }
+
+            .menu-toggle { display: flex; }
+            
+            .header-actions .cta-button { display: none; } /* Hide button in header on tablet */
+
+            .main-nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 81px; /* Height of header */
+                left: 0;
+                width: 100%;
+                background-color: var(--body-bg);
+                padding: 20px;
+                box-shadow: 0 5px 10px var(--header-shadow);
+                gap: 15px;
+            }
+            .main-nav.active li { width: 100%; }
+            .main-nav.active a { display: block; padding: 10px; }
+            
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-content h2 { font-size: 48px; }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+            
+            .hero-image-wrapper { margin-top: 50px; }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text { display: none; } /* Hide text next to logo on small screens */
+
+            .hero-content h2 { font-size: 36px; }
+            .hero-content p { font-size: 16px; }
+
+            .code-image-container { transform: none; }
+            .satisfaction-card { left: 10px; top: -10px; padding: 15px; }
+            .satisfaction-card .percentage { font-size: 32px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">EC</div>
+                <div class="logo-text">
+                    <h1>Excellence CA</h1>
+                    <p>Chartered Accountants & Business Advisors</p>
+                </div>
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Why Choose Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="cta-button">Get Free Consultation</a>
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Your Trusted <br> <span class="highlight">CA Partners</span> <br> in India</h2>
+                    <p>
+                        Comprehensive accounting, taxation, and business advisory services
+                        for individuals and enterprises. Expert guidance for GST, Income Tax,
+                        Company Registration, and Financial Planning.
+                    </p>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="code-image-container">
+                        <img src="https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Code on a screen" class="code-image">
+                        <div class="satisfaction-card">
+                            <div class="percentage">99%</div>
+                            <div class="label">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
