@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Excellence CA</title>
+    <style>
+        /* --- Google Font Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        /* --- CSS Variables --- */
+        :root {
+            --primary-blue: #3661ED;
+            --light-blue: #eef2ff;
+            --primary-yellow: #F3B63A;
+            --cta-orange: #F7A622;
+            --dark-text: #333;
+            --light-text: #fff;
+            --body-bg: #f8f9fa; /* A very light grey for the body */
+            --nav-link-color: #555;
+            --header-shadow: rgba(0, 0, 0, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.07);
+        }
+
+        /* --- General Styles & Resets --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--body-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Navigation (Same as homepage) --- */
+        .main-header {
+            background-color: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--header-shadow);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark-text);
+        }
+
+        .logo-icon {
+            background-color: #1E4AE9;
+            color: var(--light-text);
+            font-weight: 700;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--nav-link-color);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary-blue);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cta-button {
+            background-color: var(--cta-orange);
+            color: var(--light-text);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #e09315;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Page Header Banner --- */
+        .page-header-banner {
+            background: linear-gradient(100deg, #1e4ae9, #3f71f8);
+            color: var(--light-text);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header-banner h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header-banner p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Services Section --- */
+        .services-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .services-category {
+            margin-bottom: 60px;
+        }
+
+        .services-category-title {
+            font-size: 28px;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--primary-blue);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: var(--dark-text);
+        }
+
+        .service-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            flex-grow: 1; /* Pushes button to bottom if used */
+        }
+        
+        /* --- CTA Section --- */
+        .cta-section {
+            background-color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: #2c3e50;
+            color: var(--light-text);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .main-footer p {
+            opacity: 0.8;
+            font-size: 15px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .main-nav { display: none; }
+            .menu-toggle { display: flex; }
+            .header-actions .cta-button { display: none; }
+
+            .main-nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 81px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 5px 10px var(--header-shadow);
+                gap: 15px;
+            }
+            .main-nav.active li { width: 100%; }
+            .main-nav.active a { display: block; padding: 10px; }
+            
+            .page-header-banner h1 { font-size: 38px; }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 { font-size: 30px; }
+            .services-category-title { font-size: 24px; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text { display: none; }
+            .page-header-banner h1 { font-size: 32px; }
+            .page-header-banner p { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">EC</div>
+                <div class="logo-text">
+                    <h1>Excellence CA</h1>
+                    <p>Chartered Accountants & Business Advisors</p>
+                </div>
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#" class="active">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Why Choose Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="cta-button">Get Free Consultation</a>
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header Banner -->
+        <section class="page-header-banner">
+            <div class="container">
+                <h1>Our Services</h1>
+                <p>We offer a comprehensive range of professional services to meet the diverse needs of businesses and individuals.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="container">
+
+                <!-- Taxation Services -->
+                <div class="services-category">
+                    <h2 class="services-category-title">Taxation Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m4.5-3.493l-9.75 9.75-4.5-4.5-1.414 1.414L9 16.086l11.164-11.164-1.414-1.414z" /></svg>
+                            </div>
+                            <h3>GST Registration & Filing</h3>
+                            <p>Seamless GST registration and timely filing of returns to ensure your business is fully compliant with GST regulations.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0a2.25 2.25 0 012.25 2.25v1.5a2.25 2.25 0 01-2.25 2.25H3a2.25 2.25 0 01-2.25-2.25v-1.5A2.25 2.25 0 013 4.5h.75m14.25 6l-3.75-3.75v3.75m-3.75-3.75l-3.75 3.75V11.25m3.75 3.75v3.75m0-3.75l3.75 3.75M3.75 12h16.5" /></svg>
+                            </div>
+                            <h3>Income Tax Filing</h3>
+                            <p>Expert assistance for individuals and corporates in preparing and filing income tax returns, ensuring accuracy and maximum savings.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <h3>Tax Planning & Advisory</h3>
+                            <p>Strategic tax planning to optimize your tax liabilities and provide advisory on complex tax matters, both domestic and international.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accounting & Assurance -->
+                <div class="services-category">
+                    <h2 class="services-category-title">Accounting & Assurance</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0A2.25 2.25 0 015.63 8.25h12.74a2.25 2.25 0 012.25 2.25" /></svg>
+                            </div>
+                            <h3>Bookkeeping & Accounting</h3>
+                            <p>Meticulous bookkeeping and accounting services to maintain accurate financial records, providing a clear view of your financial health.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                            </div>
+                            <h3>Statutory & Internal Audit</h3>
+                            <p>Conducting statutory audits as per legal requirements and internal audits to improve operational efficiency and strengthen controls.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>
+                            </div>
+                            <h3>Financial Statement Preparation</h3>
+                            <p>Accurate preparation of financial statements, including balance sheets and profit & loss accounts, compliant with accounting standards.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Advisory -->
+                 <div class="services-category">
+                    <h2 class="services-category-title">Business Registration & Advisory</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6m-6 4.5h6M6.75 21v-2.25a2.25 2.25 0 012.25-2.25h6a2.25 2.25 0 012.25 2.25V21" /></svg>
+                            </div>
+                            <h3>Company & LLP Registration</h3>
+                            <p>Complete support for registering Private Limited Companies, LLPs, One Person Companies, and other business structures in India.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                            </div>
+                            <h3>ROC & Secretarial Compliance</h3>
+                            <p>Handling all annual ROC filings and secretarial compliances to ensure your company remains in good legal standing.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                            </div>
+                            <h3>Financial Planning & Projections</h3>
+                            <p>Assisting businesses with financial modeling, budgeting, forecasting, and creating robust financial plans for future growth.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Streamline Your Finances?</h2>
+                <p style="color: #666; max-width: 600px; margin: 0 auto 30px; line-height: 1.7;">Let our experts handle the complexities of accounting and taxation so you can focus on what you do best—growing your business.</p>
+                <a href="#" class="cta-button">Get Free Consultation</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2024 Excellence CA. All Rights Reserved. </p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
